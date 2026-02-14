@@ -6,6 +6,8 @@ import Combine
 final class MacroPlayer: ObservableObject {
     @Published var isPlaying = false
     @Published var statusText = "Ready"
+    @Published var currentStepIndex: Int? = nil
+    @Published var playingMacroId: String? = nil
 
     private var playbackTask: Task<Void, Never>?
 
@@ -14,11 +16,14 @@ final class MacroPlayer: ObservableObject {
         guard !isPlaying else { return }
 
         isPlaying = true
+        playingMacroId = macro.id
         statusText = "Playing: \(macro.name)"
 
         playbackTask = Task {
             await executePlayback(macro)
             isPlaying = false
+            currentStepIndex = nil
+            playingMacroId = nil
             statusText = "Ready"
         }
     }
@@ -28,6 +33,8 @@ final class MacroPlayer: ObservableObject {
         playbackTask?.cancel()
         playbackTask = nil
         isPlaying = false
+        currentStepIndex = nil
+        playingMacroId = nil
         statusText = "Stopped"
     }
 
@@ -42,6 +49,7 @@ final class MacroPlayer: ObservableObject {
             for (index, step) in macro.steps.enumerated() {
                 guard !Task.isCancelled else { return }
 
+                currentStepIndex = index
                 statusText = "Playing: \(macro.name) — Step \(index + 1)/\(macro.steps.count)"
                 await executeStep(step)
             }
@@ -55,8 +63,24 @@ final class MacroPlayer: ObservableObject {
         case .leftClick:
             await MouseSimulator.leftClick(at: CGPoint(x: step.x, y: step.y))
 
+        case .doubleClick:
+            await MouseSimulator.doubleClick(at: CGPoint(x: step.x, y: step.y))
+
+        case .rightClick:
+            await MouseSimulator.rightClick(at: CGPoint(x: step.x, y: step.y))
+
         case .keyboardShortcut:
             KeyboardSimulator.simulateShortcut(keys: step.keys)
+            try? await Task.sleep(nanoseconds: 50_000_000)
+
+        case .keystroke:
+            if let keyName = step.keys.first {
+                KeyboardSimulator.simulateKeystroke(keyName: keyName)
+                try? await Task.sleep(nanoseconds: 50_000_000)
+            }
+
+        case .typeText:
+            await KeyboardSimulator.typeText(step.text)
 
         case .wait:
             await interruptibleWait(ms: step.delayMs)

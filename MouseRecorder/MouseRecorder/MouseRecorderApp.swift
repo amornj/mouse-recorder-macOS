@@ -6,13 +6,8 @@ struct MouseRecorderApp: App {
 
     var body: some Scene {
         WindowGroup {
-            VStack(spacing: 0) {
-                if !appDelegate.viewModel.isAccessibilityGranted {
-                    AccessibilityBannerView()
-                }
-                MainView()
-            }
-            .environmentObject(appDelegate.viewModel)
+            MainView()
+                .environmentObject(appDelegate.viewModel)
         }
         .windowStyle(.titleBar)
         .defaultSize(width: 800, height: 500)

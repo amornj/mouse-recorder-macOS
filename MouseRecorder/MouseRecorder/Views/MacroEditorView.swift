@@ -132,14 +132,32 @@ struct MacroEditorView: View {
 
     private var addStepMenu: some View {
         Menu {
-            Button("Left Click") {
-                viewModel.addStep(type: .leftClick, toMacroId: macroId)
+            Section("Mouse") {
+                Button("Left Click") {
+                    viewModel.addStep(type: .leftClick, toMacroId: macroId)
+                }
+                Button("Double Click") {
+                    viewModel.addStep(type: .doubleClick, toMacroId: macroId)
+                }
+                Button("Right Click") {
+                    viewModel.addStep(type: .rightClick, toMacroId: macroId)
+                }
             }
-            Button("Keyboard Shortcut") {
-                viewModel.addStep(type: .keyboardShortcut, toMacroId: macroId)
+            Section("Keyboard") {
+                Button("Keyboard Shortcut") {
+                    viewModel.addStep(type: .keyboardShortcut, toMacroId: macroId)
+                }
+                Button("Keystroke") {
+                    viewModel.addStep(type: .keystroke, toMacroId: macroId)
+                }
+                Button("Type Text") {
+                    viewModel.addStep(type: .typeText, toMacroId: macroId)
+                }
             }
-            Button("Wait") {
-                viewModel.addStep(type: .wait, toMacroId: macroId)
+            Section("Timing") {
+                Button("Wait") {
+                    viewModel.addStep(type: .wait, toMacroId: macroId)
+                }
             }
         } label: {
             Label("Add Step", systemImage: "plus")

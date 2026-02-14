@@ -45,4 +45,35 @@ enum KeyboardSimulator {
             }
         }
     }
+
+    /// Simulate a single keystroke (press and release one key, no modifiers).
+    static func simulateKeystroke(keyName: String) {
+        guard let keyCode = CGKeyCodeMap.keyCode(for: keyName) else { return }
+        let source = CGEventSource(stateID: .hidSystemState)
+
+        if let downEvent = CGEvent(keyboardEventSource: source, virtualKey: keyCode, keyDown: true) {
+            downEvent.post(tap: .cghidEventTap)
+        }
+        if let upEvent = CGEvent(keyboardEventSource: source, virtualKey: keyCode, keyDown: false) {
+            upEvent.post(tap: .cghidEventTap)
+        }
+    }
+
+    /// Type a string of text character by character using CGEvent Unicode input.
+    static func typeText(_ text: String, delayPerChar: UInt64 = 10_000_000) async {
+        let source = CGEventSource(stateID: .hidSystemState)
+
+        for char in text {
+            let utf16 = Array(String(char).utf16)
+            if let event = CGEvent(keyboardEventSource: source, virtualKey: 0, keyDown: true) {
+                event.keyboardSetUnicodeString(stringLength: utf16.count, unicodeString: utf16)
+                event.post(tap: .cghidEventTap)
+            }
+            if let event = CGEvent(keyboardEventSource: source, virtualKey: 0, keyDown: false) {
+                event.post(tap: .cghidEventTap)
+            }
+            // Small delay between characters for reliability
+            try? await Task.sleep(nanoseconds: delayPerChar)
+        }
+    }
 }

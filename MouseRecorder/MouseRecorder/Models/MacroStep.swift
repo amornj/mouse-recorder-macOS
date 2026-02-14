@@ -2,7 +2,11 @@ import Foundation
 
 enum StepType: String, Codable, CaseIterable {
     case leftClick = "LeftClick"
+    case doubleClick = "DoubleClick"
+    case rightClick = "RightClick"
     case keyboardShortcut = "KeyboardShortcut"
+    case keystroke = "Keystroke"
+    case typeText = "TypeText"
     case wait = "Wait"
 }
 
@@ -13,13 +17,23 @@ struct MacroStep: Codable, Identifiable, Equatable {
     var y: Int
     var keys: [String]
     var delayMs: Int
+    var text: String
 
     var displayText: String {
         switch type {
         case .leftClick:
             return "Left Click at (\(x), \(y))"
+        case .doubleClick:
+            return "Double Click at (\(x), \(y))"
+        case .rightClick:
+            return "Right Click at (\(x), \(y))"
         case .keyboardShortcut:
             return keys.isEmpty ? "Keyboard Shortcut" : keys.joined(separator: " + ")
+        case .keystroke:
+            return keys.isEmpty ? "Keystroke" : "Press \(keys.first ?? "")"
+        case .typeText:
+            let preview = text.prefix(30)
+            return text.isEmpty ? "Type Text" : "Type \"\(preview)\(text.count > 30 ? "…" : "")\""
         case .wait:
             return "Wait \(delayMs) ms"
         }
@@ -31,7 +45,8 @@ struct MacroStep: Codable, Identifiable, Equatable {
         x: Int = 0,
         y: Int = 0,
         keys: [String] = [],
-        delayMs: Int = Constants.defaultDelayMs
+        delayMs: Int = Constants.defaultDelayMs,
+        text: String = ""
     ) {
         self.id = id
         self.type = type
@@ -39,6 +54,7 @@ struct MacroStep: Codable, Identifiable, Equatable {
         self.y = y
         self.keys = keys
         self.delayMs = delayMs
+        self.text = text
     }
 
     enum CodingKeys: String, CodingKey {
@@ -47,6 +63,7 @@ struct MacroStep: Codable, Identifiable, Equatable {
         case y = "Y"
         case keys = "Keys"
         case delayMs = "DelayMs"
+        case text = "Text"
     }
 
     init(from decoder: Decoder) throws {
@@ -57,6 +74,7 @@ struct MacroStep: Codable, Identifiable, Equatable {
         self.y = try container.decodeIfPresent(Int.self, forKey: .y) ?? 0
         self.keys = try container.decodeIfPresent([String].self, forKey: .keys) ?? []
         self.delayMs = try container.decodeIfPresent(Int.self, forKey: .delayMs) ?? Constants.defaultDelayMs
+        self.text = try container.decodeIfPresent(String.self, forKey: .text) ?? ""
     }
 
     func encode(to encoder: Encoder) throws {
@@ -66,5 +84,6 @@ struct MacroStep: Codable, Identifiable, Equatable {
         try container.encode(y, forKey: .y)
         try container.encode(keys, forKey: .keys)
         try container.encode(delayMs, forKey: .delayMs)
+        try container.encode(text, forKey: .text)
     }
 }

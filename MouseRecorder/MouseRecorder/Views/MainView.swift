@@ -5,6 +5,15 @@ struct MainView: View {
     @EnvironmentObject var viewModel: MacroListViewModel
 
     var body: some View {
+        VStack(spacing: 0) {
+            if !viewModel.isAccessibilityGranted {
+                AccessibilityBannerView()
+            }
+            navigationContent
+        }
+    }
+
+    private var navigationContent: some View {
         NavigationSplitView {
             MacroListSidebar()
         } detail: {

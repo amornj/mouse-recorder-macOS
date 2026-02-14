@@ -10,6 +10,8 @@ final class MacroListViewModel: ObservableObject {
     @Published var isPlaying: Bool = false
     @Published var statusText: String = "Ready"
     @Published var isAccessibilityGranted: Bool = false
+    @Published var currentStepIndex: Int? = nil
+    @Published var playingMacroId: String? = nil
 
     let macroStore = MacroStore()
     let macroPlayer = MacroPlayer()
@@ -41,6 +43,12 @@ final class MacroListViewModel: ObservableObject {
 
         macroPlayer.$statusText
             .assign(to: &$statusText)
+
+        macroPlayer.$currentStepIndex
+            .assign(to: &$currentStepIndex)
+
+        macroPlayer.$playingMacroId
+            .assign(to: &$playingMacroId)
 
         // Forward accessibility state so SwiftUI views update
         accessibilityService.$isGranted

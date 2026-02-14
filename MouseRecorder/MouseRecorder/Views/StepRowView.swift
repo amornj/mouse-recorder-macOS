@@ -9,13 +9,25 @@ struct StepRowView: View {
 
     @State private var showingKeyCaptureSheet = false
 
+    private var isActiveStep: Bool {
+        viewModel.playingMacroId == macroId && viewModel.currentStepIndex == index
+    }
+
     var body: some View {
         HStack(spacing: 12) {
             // Step number
             Text("\(index + 1)")
                 .font(.caption)
-                .foregroundColor(.secondary)
+                .fontWeight(isActiveStep ? .bold : .regular)
+                .foregroundColor(isActiveStep ? .accentColor : .secondary)
                 .frame(width: 20)
+
+            // Active indicator
+            if isActiveStep {
+                Circle()
+                    .fill(Color.green)
+                    .frame(width: 8, height: 8)
+            }
 
             // Step type icon
             stepIcon
@@ -29,6 +41,13 @@ struct StepRowView: View {
             stepActions
         }
         .padding(.vertical, 4)
+        .padding(.horizontal, 6)
+        .background(
+            RoundedRectangle(cornerRadius: 6)
+                .fill(isActiveStep ? Color.accentColor.opacity(0.12) : Color.clear)
+                .shadow(color: isActiveStep ? Color.accentColor.opacity(0.3) : .clear, radius: 4, x: 0, y: 1)
+        )
+        .animation(.easeInOut(duration: 0.2), value: isActiveStep)
         .sheet(isPresented: $showingKeyCaptureSheet) {
             KeyCaptureView { keys in
                 if let keys {
@@ -46,9 +65,21 @@ struct StepRowView: View {
         case .leftClick:
             Image(systemName: "cursorarrow.click")
                 .foregroundColor(.blue)
+        case .doubleClick:
+            Image(systemName: "cursorarrow.click.2")
+                .foregroundColor(.blue)
+        case .rightClick:
+            Image(systemName: "cursorarrow.click")
+                .foregroundColor(.purple)
         case .keyboardShortcut:
             Image(systemName: "keyboard")
                 .foregroundColor(.green)
+        case .keystroke:
+            Image(systemName: "character.cursor.ibeam")
+                .foregroundColor(.teal)
+        case .typeText:
+            Image(systemName: "text.cursor")
+                .foregroundColor(.indigo)
         case .wait:
             Image(systemName: "clock")
                 .foregroundColor(.orange)
@@ -59,45 +90,11 @@ struct StepRowView: View {
     private var stepContent: some View {
         switch step.type {
         case .leftClick:
-            HStack(spacing: 8) {
-                Text("Click at")
-                    .foregroundColor(.secondary)
-
-                HStack(spacing: 4) {
-                    Text("X:")
-                        .foregroundColor(.secondary)
-                    TextField("X", value: Binding(
-                        get: { step.x },
-                        set: { newX in
-                            viewModel.updateStep(stepId: step.id, inMacroId: macroId) { s in
-                                s.x = newX
-                            }
-                        }
-                    ), format: .number)
-                    .textFieldStyle(.roundedBorder)
-                    .frame(width: 70)
-                }
-
-                HStack(spacing: 4) {
-                    Text("Y:")
-                        .foregroundColor(.secondary)
-                    TextField("Y", value: Binding(
-                        get: { step.y },
-                        set: { newY in
-                            viewModel.updateStep(stepId: step.id, inMacroId: macroId) { s in
-                                s.y = newY
-                            }
-                        }
-                    ), format: .number)
-                    .textFieldStyle(.roundedBorder)
-                    .frame(width: 70)
-                }
-
-                Button("Pick") {
-                    viewModel.pickPosition(for: step.id, inMacroId: macroId)
-                }
-                .buttonStyle(.bordered)
-            }
+            coordinateEditor(label: "Click at")
+        case .doubleClick:
+            coordinateEditor(label: "Double click at")
+        case .rightClick:
+            coordinateEditor(label: "Right click at")
 
         case .keyboardShortcut:
             HStack(spacing: 8) {
@@ -108,6 +105,59 @@ struct StepRowView: View {
                     showingKeyCaptureSheet = true
                 }
                 .buttonStyle(.bordered)
+            }
+
+        case .keystroke:
+            HStack(spacing: 8) {
+                Text("Key:")
+                    .foregroundColor(.secondary)
+                Picker("", selection: Binding(
+                    get: { step.keys.first ?? "" },
+                    set: { newKey in
+                        viewModel.updateStep(stepId: step.id, inMacroId: macroId) { s in
+                            s.keys = newKey.isEmpty ? [] : [newKey]
+                        }
+                    }
+                )) {
+                    Text("Select...").tag("")
+                    Section("Letters") {
+                        ForEach(Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ").map(String.init), id: \.self) { k in
+                            Text(k).tag(k)
+                        }
+                    }
+                    Section("Numbers") {
+                        ForEach(Array("0123456789").map(String.init), id: \.self) { k in
+                            Text(k).tag(k)
+                        }
+                    }
+                    Section("Special") {
+                        ForEach(["Space", "Tab", "Enter", "Escape", "Delete", "Up", "Down", "Left", "Right", "PageUp", "PageDown", "Home", "End"], id: \.self) { k in
+                            Text(k).tag(k)
+                        }
+                    }
+                    Section("Function") {
+                        ForEach((1...12).map { "F\($0)" }, id: \.self) { k in
+                            Text(k).tag(k)
+                        }
+                    }
+                }
+                .frame(width: 130)
+            }
+
+        case .typeText:
+            HStack(spacing: 8) {
+                Text("Text:")
+                    .foregroundColor(.secondary)
+                TextField("Enter text to type", text: Binding(
+                    get: { step.text },
+                    set: { newText in
+                        viewModel.updateStep(stepId: step.id, inMacroId: macroId) { s in
+                            s.text = newText
+                        }
+                    }
+                ))
+                .textFieldStyle(.roundedBorder)
+                .frame(minWidth: 200)
             }
 
         case .wait:
@@ -127,6 +177,48 @@ struct StepRowView: View {
                 Text("ms")
                     .foregroundColor(.secondary)
             }
+        }
+    }
+
+    private func coordinateEditor(label: String) -> some View {
+        HStack(spacing: 8) {
+            Text(label)
+                .foregroundColor(.secondary)
+
+            HStack(spacing: 4) {
+                Text("X:")
+                    .foregroundColor(.secondary)
+                TextField("X", value: Binding(
+                    get: { step.x },
+                    set: { newX in
+                        viewModel.updateStep(stepId: step.id, inMacroId: macroId) { s in
+                            s.x = newX
+                        }
+                    }
+                ), format: .number)
+                .textFieldStyle(.roundedBorder)
+                .frame(width: 70)
+            }
+
+            HStack(spacing: 4) {
+                Text("Y:")
+                    .foregroundColor(.secondary)
+                TextField("Y", value: Binding(
+                    get: { step.y },
+                    set: { newY in
+                        viewModel.updateStep(stepId: step.id, inMacroId: macroId) { s in
+                            s.y = newY
+                        }
+                    }
+                ), format: .number)
+                .textFieldStyle(.roundedBorder)
+                .frame(width: 70)
+            }
+
+            Button("Pick") {
+                viewModel.pickPosition(for: step.id, inMacroId: macroId)
+            }
+            .buttonStyle(.bordered)
         }
     }
 

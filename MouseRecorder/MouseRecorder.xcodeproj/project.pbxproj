@@ -62,7 +62,7 @@
 		A20018000000000000000018 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A2001900000000000000001A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2001A00000000000000001B /* MouseRecorder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MouseRecorder.entitlements; sourceTree = "<group>"; };
-		A2001B00000000000000001C /* MouseRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MouseRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2001B00000000000000001C /* Mouse Recorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mouse Recorder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2000100000000000000AB01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,7 +78,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A40001000000000000000001 /* = Begin Main group = */ = {
+		A40001000000000000000001 = {
 			isa = PBXGroup;
 			children = (
 				A40002000000000000000002 /* MouseRecorder */,
@@ -163,7 +163,7 @@
 		A40009000000000000000009 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A2001B00000000000000001C /* MouseRecorder.app */,
+				A2001B00000000000000001C /* Mouse Recorder.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,7 +188,7 @@
 				A70019000000000000000019 /* HotKey */,
 			);
 			productName = MouseRecorder;
-			productReference = A2001B00000000000000001C /* MouseRecorder.app */;
+			productReference = A2001B00000000000000001C /* Mouse Recorder.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -227,6 +227,17 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		B3000100000000000000AB01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1000100000000000000AB01 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A80001000000000000000001 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -260,17 +271,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXResourcesBuildPhase section */
-		B3000100000000000000AB01 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B1000100000000000000AB01 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		AB0001000000000000000001 /* Debug */ = {
@@ -397,6 +397,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 47Y5Z32ZK3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = MouseRecorder/Info.plist;
@@ -420,6 +421,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 47Y5Z32ZK3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = MouseRecorder/Info.plist;

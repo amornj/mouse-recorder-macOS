@@ -1,68 +1,113 @@
 # Mouse Recorder for macOS
 
-A native macOS application for automating mouse clicks and keyboard shortcuts via user-defined macros.
+A native macOS app for recording and playing back mouse and keyboard macros. Create automation sequences with clicks, keystrokes, text input, and timed delays — then trigger them instantly with global hotkeys.
 
-Built with Swift / SwiftUI — runs on macOS 13 Ventura and later.
-
-macOS port of [Mouse Recorder for Windows](https://github.com/amornj/mouse-recorder).
+![macOS 13+](https://img.shields.io/badge/macOS-13%2B-blue)
+![Swift 5.9](https://img.shields.io/badge/Swift-5.9-orange)
+![License](https://img.shields.io/badge/license-MIT-green)
 
 ## Features
 
-- **Macro editor** — create sequences of left-clicks, keyboard shortcuts, and wait delays
-- **Position picker** — fullscreen crosshair overlay to capture exact screen coordinates
-- **Keyboard shortcut capture** — press any key combination to record it as a step
-- **Global hotkeys** — assign macros to F1–F11 or Ctrl+key combos, trigger from any application
-- **Emergency stop** — press F12 to immediately halt a running macro
-- **Loop / repeat** — run a macro N times or infinitely (set repeat to 0)
-- **Import / export** — share macros as JSON files (cross-platform compatible with Windows version)
-- **Menu bar icon** — minimize to menu bar, hotkeys remain active in the background
-- **Auto-save** — macros persist automatically to `~/Library/Application Support/MouseRecorder/macros.json`
-- **Accessibility permission** — guided setup for macOS Accessibility permission
+- **7 step types**: Left Click, Double Click, Right Click, Keyboard Shortcut, Keystroke, Type Text, Wait
+- **Global hotkeys**: Assign F1–F11, Ctrl+F1–F12, or Ctrl+1–9 to trigger any macro
+- **F12 emergency stop**: Instantly halt any running macro
+- **Position picker**: Fullscreen crosshair overlay to capture screen coordinates
+- **Key capture**: Record keyboard shortcuts with a visual dialog
+- **Active step highlight**: See which step is executing in real-time
+- **Import/Export**: Share macros as JSON files (compatible with [Windows version](https://github.com/amornj/mouse-recorder))
+- **Menu bar**: Runs in the background with a status bar icon
+- **Auto-save**: Macros persist automatically between sessions
+
+## Screenshots
+
+*Coming soon*
 
 ## Requirements
 
-- **To run**: macOS 13 Ventura or later, Accessibility permission granted
-- **To build**: Xcode 15+ with Swift 5.9+
+- macOS 13.0 (Ventura) or later
+- **Accessibility permission** required for mouse/keyboard simulation
 
-## Build
+## Installation
 
-1. Clone the repository
-2. Open `MouseRecorder/MouseRecorder.xcodeproj` in Xcode
-3. SPM will resolve the [HotKey](https://github.com/soffes/HotKey) dependency automatically
-4. Build and run with `Cmd+R`
+### From Source
 
-Or from command line:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/amornj/mouse-recorder-macOS.git
+   cd mouse-recorder-macOS/MouseRecorder
+   ```
+
+2. Open in Xcode:
+   ```bash
+   open MouseRecorder.xcodeproj
+   ```
+
+3. Build and run (Cmd+R)
+
+4. Grant Accessibility permission when prompted:
+   - System Settings > Privacy & Security > Accessibility
+   - Toggle on Mouse Recorder
+
+### Command Line
+
 ```bash
 cd MouseRecorder
-xcodebuild -scheme MouseRecorder -configuration Release build
+swift build
+swift run
 ```
 
-## Macro JSON Format
+## Usage
 
-Macros are stored as JSON and can be imported/exported. The format is compatible with the Windows version:
+### Creating a Macro
 
-```json
-[
-  {
-    "Id": "uuid-string",
-    "Name": "My Macro",
-    "Hotkey": "F6",
-    "RepeatCount": 1,
-    "Steps": [
-      { "Type": "LeftClick", "X": 500, "Y": 300, "Keys": [], "DelayMs": 500 },
-      { "Type": "Wait", "X": 0, "Y": 0, "Keys": [], "DelayMs": 1000 },
-      { "Type": "KeyboardShortcut", "X": 0, "Y": 0, "Keys": ["Ctrl", "C"], "DelayMs": 500 }
-    ]
-  }
-]
+1. Click **+** in the toolbar to create a new macro
+2. Give it a name and assign a hotkey
+3. Add steps using the **Add Step** menu:
+   - **Mouse**: Left Click, Double Click, Right Click — use **Pick** to select coordinates
+   - **Keyboard**: Keyboard Shortcut (combos like Ctrl+C), Keystroke (single key), Type Text (string input)
+   - **Timing**: Wait (delay in milliseconds)
+4. Set repeat count (0 = infinite loop)
+
+### Running a Macro
+
+- Press the assigned hotkey, or click **Play** in the toolbar
+- Press **F12** at any time to stop immediately
+- The active step highlights during playback
+
+### Import/Export
+
+- **Export**: File menu > Export All Macros, or right-click a macro > Export
+- **Import**: File menu > Import Macros
+- JSON format is compatible with the Windows version
+
+## Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| Cmd+N | New Macro |
+| Cmd+I | Import Macros |
+| Cmd+E | Export Macros |
+| Delete | Delete Selected Macro |
+| F12 | Emergency Stop (global) |
+
+## Data Storage
+
+Macros are saved to:
+```
+~/Library/Application Support/MouseRecorder/macros.json
 ```
 
-## macOS Notes
+## Cross-Platform Compatibility
 
-- **Accessibility permission** is required for simulating mouse clicks and keyboard input. The app will prompt you to enable it in System Settings > Privacy & Security > Accessibility.
-- **Function keys** (F1–F12) default to system functions on Mac keyboards. You may need to hold `fn` or change the setting in System Settings > Keyboard.
-- **Modifier mapping** from Windows: Ctrl → Control, Alt → Option, Win → Command.
-- **No App Sandbox** — the app requires unsandboxed access for `CGEventPost` to work. It is not distributed via the Mac App Store.
+Macros use the same JSON format as the [Windows version](https://github.com/amornj/mouse-recorder), enabling cross-platform sharing. The macOS-only step types (DoubleClick, RightClick, Keystroke, TypeText) are ignored by the Windows version.
+
+## Privacy
+
+Mouse Recorder requires Accessibility permission solely to simulate mouse clicks and keyboard input. No data is collected or transmitted. See the [Privacy Policy](docs/privacy-policy.md).
+
+## Support
+
+Having issues? See [Support](docs/support.md).
 
 ## License
 
