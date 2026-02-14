@@ -3,51 +3,45 @@ import SwiftUI
 @main
 struct MouseRecorderApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @StateObject private var viewModel = MacroListViewModel()
 
     var body: some Scene {
         WindowGroup {
-            Group {
-                if viewModel.accessibilityService.isGranted {
-                    MainView()
-                } else {
-                    AccessibilityPromptView()
+            VStack(spacing: 0) {
+                if !appDelegate.viewModel.accessibilityService.isGranted {
+                    AccessibilityBannerView()
                 }
+                MainView()
             }
-            .environmentObject(viewModel)
-            .onAppear {
-                appDelegate.viewModel = viewModel
-                appDelegate.statusBarController.setup(viewModel: viewModel)
-            }
+            .environmentObject(appDelegate.viewModel)
         }
         .windowStyle(.titleBar)
         .defaultSize(width: 800, height: 500)
         .commands {
             CommandGroup(replacing: .newItem) {
                 Button("New Macro") {
-                    viewModel.addMacro()
+                    appDelegate.viewModel.addMacro()
                 }
                 .keyboardShortcut("n")
             }
 
             CommandGroup(after: .newItem) {
                 Button("Import Macros...") {
-                    viewModel.importMacros()
+                    appDelegate.viewModel.importMacros()
                 }
                 .keyboardShortcut("i")
 
                 Button("Export All Macros...") {
-                    viewModel.exportMacros()
+                    appDelegate.viewModel.exportMacros()
                 }
                 .keyboardShortcut("e")
             }
 
             CommandGroup(replacing: .pasteboard) {
                 Button("Delete Macro") {
-                    viewModel.deleteSelectedMacro()
+                    appDelegate.viewModel.deleteSelectedMacro()
                 }
                 .keyboardShortcut(.delete)
-                .disabled(viewModel.selectedMacroId == nil)
+                .disabled(appDelegate.viewModel.selectedMacroId == nil)
             }
         }
     }

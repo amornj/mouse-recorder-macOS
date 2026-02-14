@@ -4,9 +4,8 @@ import SwiftUI
 /// NSApplicationDelegate handling app lifecycle, status bar, and window management.
 @MainActor
 final class AppDelegate: NSObject, NSApplicationDelegate {
-    var viewModel: MacroListViewModel!
+    let viewModel = MacroListViewModel()
     let statusBarController = StatusBarController()
-    private var mainWindow: NSWindow?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         statusBarController.setup(viewModel: viewModel)
@@ -36,7 +35,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationWillTerminate(_ notification: Notification) {
-        // Cleanup
         viewModel.stopPlayback()
         viewModel.hotkeyService.unregisterAll()
     }
