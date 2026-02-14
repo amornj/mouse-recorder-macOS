@@ -1,0 +1,481 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10001000000000000000001 /* MouseRecorderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20001000000000000000001 /* MouseRecorderApp.swift */; };
+		A10002000000000000000002 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20002000000000000000002 /* AppDelegate.swift */; };
+		A10003000000000000000003 /* Macro.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20003000000000000000003 /* Macro.swift */; };
+		A10004000000000000000004 /* MacroStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20004000000000000000004 /* MacroStep.swift */; };
+		A10005000000000000000005 /* HotkeyBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20005000000000000000005 /* HotkeyBinding.swift */; };
+		A10006000000000000000006 /* MacroListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20006000000000000000006 /* MacroListViewModel.swift */; };
+		A10007000000000000000007 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20007000000000000000007 /* MainView.swift */; };
+		A10008000000000000000008 /* MacroListSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20008000000000000000008 /* MacroListSidebar.swift */; };
+		A10009000000000000000009 /* MacroEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20009000000000000000009 /* MacroEditorView.swift */; };
+		A1000A00000000000000000A /* StepRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000A00000000000000000A /* StepRowView.swift */; };
+		A1000B00000000000000000B /* KeyCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000B00000000000000000B /* KeyCaptureView.swift */; };
+		A1000C00000000000000000C /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000C00000000000000000C /* OverlayView.swift */; };
+		A1000D00000000000000000D /* AccessibilityPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000D00000000000000000D /* AccessibilityPromptView.swift */; };
+		A1000E00000000000000000E /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000E00000000000000000E /* StatusBarController.swift */; };
+		A1000F00000000000000000F /* MacroStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000F00000000000000000F /* MacroStore.swift */; };
+		A10010000000000000000010 /* MacroPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20010000000000000000010 /* MacroPlayer.swift */; };
+		A10011000000000000000011 /* MouseSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20011000000000000000011 /* MouseSimulator.swift */; };
+		A10012000000000000000012 /* KeyboardSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20012000000000000000012 /* KeyboardSimulator.swift */; };
+		A10013000000000000000013 /* HotkeyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20013000000000000000013 /* HotkeyService.swift */; };
+		A10014000000000000000014 /* AccessibilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20014000000000000000014 /* AccessibilityService.swift */; };
+		A10015000000000000000015 /* OverlayWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20015000000000000000015 /* OverlayWindowController.swift */; };
+		A10016000000000000000016 /* CGKeyCodeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20016000000000000000016 /* CGKeyCodeMap.swift */; };
+		A10017000000000000000017 /* ModifierFlagMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20017000000000000000017 /* ModifierFlagMapping.swift */; };
+		A10018000000000000000018 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20018000000000000000018 /* Constants.swift */; };
+		A10019000000000000000019 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = A70019000000000000000019 /* HotKey */; };
+		B1000100000000000000AB01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2000100000000000000AB01 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A20001000000000000000001 /* MouseRecorderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseRecorderApp.swift; sourceTree = "<group>"; };
+		A20002000000000000000002 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A20003000000000000000003 /* Macro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macro.swift; sourceTree = "<group>"; };
+		A20004000000000000000004 /* MacroStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroStep.swift; sourceTree = "<group>"; };
+		A20005000000000000000005 /* HotkeyBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyBinding.swift; sourceTree = "<group>"; };
+		A20006000000000000000006 /* MacroListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroListViewModel.swift; sourceTree = "<group>"; };
+		A20007000000000000000007 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		A20008000000000000000008 /* MacroListSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroListSidebar.swift; sourceTree = "<group>"; };
+		A20009000000000000000009 /* MacroEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroEditorView.swift; sourceTree = "<group>"; };
+		A2000A00000000000000000A /* StepRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepRowView.swift; sourceTree = "<group>"; };
+		A2000B00000000000000000B /* KeyCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCaptureView.swift; sourceTree = "<group>"; };
+		A2000C00000000000000000C /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
+		A2000D00000000000000000D /* AccessibilityPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityPromptView.swift; sourceTree = "<group>"; };
+		A2000E00000000000000000E /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
+		A2000F00000000000000000F /* MacroStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroStore.swift; sourceTree = "<group>"; };
+		A20010000000000000000010 /* MacroPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroPlayer.swift; sourceTree = "<group>"; };
+		A20011000000000000000011 /* MouseSimulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseSimulator.swift; sourceTree = "<group>"; };
+		A20012000000000000000012 /* KeyboardSimulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSimulator.swift; sourceTree = "<group>"; };
+		A20013000000000000000013 /* HotkeyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyService.swift; sourceTree = "<group>"; };
+		A20014000000000000000014 /* AccessibilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityService.swift; sourceTree = "<group>"; };
+		A20015000000000000000015 /* OverlayWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayWindowController.swift; sourceTree = "<group>"; };
+		A20016000000000000000016 /* CGKeyCodeMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGKeyCodeMap.swift; sourceTree = "<group>"; };
+		A20017000000000000000017 /* ModifierFlagMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifierFlagMapping.swift; sourceTree = "<group>"; };
+		A20018000000000000000018 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A2001900000000000000001A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2001A00000000000000001B /* MouseRecorder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MouseRecorder.entitlements; sourceTree = "<group>"; };
+		A2001B00000000000000001C /* MouseRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MouseRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2000100000000000000AB01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A30001000000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10019000000000000000019 /* HotKey in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A40001000000000000000001 /* = Begin Main group = */ = {
+			isa = PBXGroup;
+			children = (
+				A40002000000000000000002 /* MouseRecorder */,
+				A40009000000000000000009 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A40002000000000000000002 /* MouseRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				A20001000000000000000001 /* MouseRecorderApp.swift */,
+				A20002000000000000000002 /* AppDelegate.swift */,
+				A40003000000000000000003 /* Models */,
+				A40004000000000000000004 /* ViewModels */,
+				A40005000000000000000005 /* Views */,
+				A40006000000000000000006 /* Services */,
+				A40007000000000000000007 /* Utilities */,
+				A2001900000000000000001A /* Info.plist */,
+				A2001A00000000000000001B /* MouseRecorder.entitlements */,
+				B2000100000000000000AB01 /* Assets.xcassets */,
+			);
+			path = MouseRecorder;
+			sourceTree = "<group>";
+		};
+		A40003000000000000000003 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A20003000000000000000003 /* Macro.swift */,
+				A20004000000000000000004 /* MacroStep.swift */,
+				A20005000000000000000005 /* HotkeyBinding.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A40004000000000000000004 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A20006000000000000000006 /* MacroListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A40005000000000000000005 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A20007000000000000000007 /* MainView.swift */,
+				A20008000000000000000008 /* MacroListSidebar.swift */,
+				A20009000000000000000009 /* MacroEditorView.swift */,
+				A2000A00000000000000000A /* StepRowView.swift */,
+				A2000B00000000000000000B /* KeyCaptureView.swift */,
+				A2000C00000000000000000C /* OverlayView.swift */,
+				A2000D00000000000000000D /* AccessibilityPromptView.swift */,
+				A2000E00000000000000000E /* StatusBarController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A40006000000000000000006 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A2000F00000000000000000F /* MacroStore.swift */,
+				A20010000000000000000010 /* MacroPlayer.swift */,
+				A20011000000000000000011 /* MouseSimulator.swift */,
+				A20012000000000000000012 /* KeyboardSimulator.swift */,
+				A20013000000000000000013 /* HotkeyService.swift */,
+				A20014000000000000000014 /* AccessibilityService.swift */,
+				A20015000000000000000015 /* OverlayWindowController.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A40007000000000000000007 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A20016000000000000000016 /* CGKeyCodeMap.swift */,
+				A20017000000000000000017 /* ModifierFlagMapping.swift */,
+				A20018000000000000000018 /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		A40009000000000000000009 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A2001B00000000000000001C /* MouseRecorder.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A50001000000000000000001 /* MouseRecorder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A60003000000000000000003 /* Build configuration list for PBXNativeTarget "MouseRecorder" */;
+			buildPhases = (
+				A80001000000000000000001 /* Sources */,
+				A30001000000000000000001 /* Frameworks */,
+				B3000100000000000000AB01 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MouseRecorder;
+			packageProductDependencies = (
+				A70019000000000000000019 /* HotKey */,
+			);
+			productName = MouseRecorder;
+			productReference = A2001B00000000000000001C /* MouseRecorder.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A90001000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					A50001000000000000000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = A60001000000000000000001 /* Build configuration list for PBXProject "MouseRecorder" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A40001000000000000000001;
+			packageReferences = (
+				AA0001000000000000000001 /* XCRemoteSwiftPackageReference "HotKey" */,
+			);
+			productRefGroup = A40009000000000000000009 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A50001000000000000000001 /* MouseRecorder */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A80001000000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10001000000000000000001 /* MouseRecorderApp.swift in Sources */,
+				A10002000000000000000002 /* AppDelegate.swift in Sources */,
+				A10003000000000000000003 /* Macro.swift in Sources */,
+				A10004000000000000000004 /* MacroStep.swift in Sources */,
+				A10005000000000000000005 /* HotkeyBinding.swift in Sources */,
+				A10006000000000000000006 /* MacroListViewModel.swift in Sources */,
+				A10007000000000000000007 /* MainView.swift in Sources */,
+				A10008000000000000000008 /* MacroListSidebar.swift in Sources */,
+				A10009000000000000000009 /* MacroEditorView.swift in Sources */,
+				A1000A00000000000000000A /* StepRowView.swift in Sources */,
+				A1000B00000000000000000B /* KeyCaptureView.swift in Sources */,
+				A1000C00000000000000000C /* OverlayView.swift in Sources */,
+				A1000D00000000000000000D /* AccessibilityPromptView.swift in Sources */,
+				A1000E00000000000000000E /* StatusBarController.swift in Sources */,
+				A1000F00000000000000000F /* MacroStore.swift in Sources */,
+				A10010000000000000000010 /* MacroPlayer.swift in Sources */,
+				A10011000000000000000011 /* MouseSimulator.swift in Sources */,
+				A10012000000000000000012 /* KeyboardSimulator.swift in Sources */,
+				A10013000000000000000013 /* HotkeyService.swift in Sources */,
+				A10014000000000000000014 /* AccessibilityService.swift in Sources */,
+				A10015000000000000000015 /* OverlayWindowController.swift in Sources */,
+				A10016000000000000000016 /* CGKeyCodeMap.swift in Sources */,
+				A10017000000000000000017 /* ModifierFlagMapping.swift in Sources */,
+				A10018000000000000000018 /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B3000100000000000000AB01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1000100000000000000AB01 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AB0001000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AB0002000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		AB0003000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MouseRecorder/MouseRecorder.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = MouseRecorder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mouserecorder.app;
+				PRODUCT_NAME = "Mouse Recorder";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AB0004000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MouseRecorder/MouseRecorder.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = MouseRecorder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mouserecorder.app;
+				PRODUCT_NAME = "Mouse Recorder";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A60001000000000000000001 /* Build configuration list for PBXProject "MouseRecorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB0001000000000000000001 /* Debug */,
+				AB0002000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A60003000000000000000003 /* Build configuration list for PBXNativeTarget "MouseRecorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB0003000000000000000003 /* Debug */,
+				AB0004000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AA0001000000000000000001 /* XCRemoteSwiftPackageReference "HotKey" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/soffes/HotKey.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A70019000000000000000019 /* HotKey */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA0001000000000000000001 /* XCRemoteSwiftPackageReference "HotKey" */;
+			productName = HotKey;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = A90001000000000000000001 /* Project object */;
+}

@@ -7,7 +7,7 @@ struct MouseRecorderApp: App {
     var body: some Scene {
         WindowGroup {
             VStack(spacing: 0) {
-                if !appDelegate.viewModel.accessibilityService.isGranted {
+                if !appDelegate.viewModel.isAccessibilityGranted {
                     AccessibilityBannerView()
                 }
                 MainView()

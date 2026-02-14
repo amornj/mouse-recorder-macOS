@@ -9,6 +9,7 @@ final class MacroListViewModel: ObservableObject {
     @Published var selectedMacroId: String?
     @Published var isPlaying: Bool = false
     @Published var statusText: String = "Ready"
+    @Published var isAccessibilityGranted: Bool = false
 
     let macroStore = MacroStore()
     let macroPlayer = MacroPlayer()
@@ -40,6 +41,10 @@ final class MacroListViewModel: ObservableObject {
 
         macroPlayer.$statusText
             .assign(to: &$statusText)
+
+        // Forward accessibility state so SwiftUI views update
+        accessibilityService.$isGranted
+            .assign(to: &$isAccessibilityGranted)
 
         // Hotkey callbacks
         hotkeyService.onMacroHotkeyPressed = { [weak self] macroId in
