@@ -18,6 +18,7 @@ struct MacroStep: Codable, Identifiable, Equatable {
     var keys: [String]
     var delayMs: Int
     var text: String
+    var note: String
 
     var displayText: String {
         switch type {
@@ -46,7 +47,8 @@ struct MacroStep: Codable, Identifiable, Equatable {
         y: Int = 0,
         keys: [String] = [],
         delayMs: Int = Constants.defaultDelayMs,
-        text: String = ""
+        text: String = "",
+        note: String = ""
     ) {
         self.id = id
         self.type = type
@@ -55,6 +57,7 @@ struct MacroStep: Codable, Identifiable, Equatable {
         self.keys = keys
         self.delayMs = delayMs
         self.text = text
+        self.note = note
     }
 
     enum CodingKeys: String, CodingKey {
@@ -64,6 +67,7 @@ struct MacroStep: Codable, Identifiable, Equatable {
         case keys = "Keys"
         case delayMs = "DelayMs"
         case text = "Text"
+        case note = "Note"
     }
 
     init(from decoder: Decoder) throws {
@@ -75,6 +79,7 @@ struct MacroStep: Codable, Identifiable, Equatable {
         self.keys = try container.decodeIfPresent([String].self, forKey: .keys) ?? []
         self.delayMs = try container.decodeIfPresent(Int.self, forKey: .delayMs) ?? Constants.defaultDelayMs
         self.text = try container.decodeIfPresent(String.self, forKey: .text) ?? ""
+        self.note = try container.decodeIfPresent(String.self, forKey: .note) ?? ""
     }
 
     func encode(to encoder: Encoder) throws {
@@ -85,5 +90,6 @@ struct MacroStep: Codable, Identifiable, Equatable {
         try container.encode(keys, forKey: .keys)
         try container.encode(delayMs, forKey: .delayMs)
         try container.encode(text, forKey: .text)
+        try container.encode(note, forKey: .note)
     }
 }

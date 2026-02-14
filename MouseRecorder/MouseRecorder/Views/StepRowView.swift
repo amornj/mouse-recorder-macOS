@@ -32,10 +32,23 @@ struct StepRowView: View {
             // Step type icon
             stepIcon
 
-            // Step content
+            // Step content (fixed width for column alignment)
             stepContent
+                .frame(width: 320, alignment: .leading)
 
-            Spacer()
+            // Note
+            TextField("Note", text: Binding(
+                get: { step.note },
+                set: { newNote in
+                    viewModel.updateStep(stepId: step.id, inMacroId: macroId) { s in
+                        s.note = newNote
+                    }
+                }
+            ))
+            .textFieldStyle(.plain)
+            .font(.caption)
+            .foregroundColor(.secondary)
+            .frame(minWidth: 80, idealWidth: 150)
 
             // Step actions
             stepActions
