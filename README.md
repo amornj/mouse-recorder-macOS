@@ -18,9 +18,9 @@ A native macOS app for recording and playing back mouse and keyboard macros. Cre
 - **Menu bar**: Runs in the background with a status bar icon
 - **Auto-save**: Macros persist automatically between sessions
 
-## Screenshots
+## Screenshot
 
-*Coming soon*
+![Mouse Recorder for macOS](docs/images/screenshot.png)
 
 ## Requirements
 
